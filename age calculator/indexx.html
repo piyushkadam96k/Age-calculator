@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Age Calculator</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+        body {
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, #131010, #3e2b2b);
+        color: #2c2c2c;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+    }
+    .container {
+        background: #734b6c;
+        color: white;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0px 4px 20px rgba(0,0,0,0.15);
+        max-width: 350px;
+        text-align: center;
+    }
+    h1 {
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 15px;
+    }
+    input {
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 16px;
+        text-align: center;
+        width: 150px;
+        outline: none;
+        background: white;
+        color: black;
+    }
+    button {
+        background: #ffb347;
+        color: black;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+    button:hover {
+        background: #e69a2e;
+    }
+    .loading {
+        display: none;
+        margin-top: 15px;
+        font-size: 16px;
+        font-weight: bold;
+        color: #ffd580;
+        min-height: 20px;
+    }
+    #result {
+        margin-top: 20px;
+        font-size: 18px;
+        font-weight: 600;
+        color: #fff6e5;
+    }
+    #birthdayInfo {
+        margin-top: 10px;
+        font-size: 16px;
+        color: #ffe8b3;
+    }
+    .highlight-text {
+        margin-top: 20px;
+        background: rgba(255, 255, 255, 0.15);
+        padding: 10px;
+        border-radius: 8px;
+        font-weight: bold;
+        color: #ffdf91;
+    }
+    /* GitHub link styling with official colors */
+    .github-link {
+        display: inline-flex;
+        align-items: center;
+        margin-top: 10px;
+        text-decoration: none;
+        background-color: #24292e; /* GitHub black */
+        padding: 8px 12px;
+        border-radius: 6px;
+        color: white;
+        font-weight: bold;
+        transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+    .github-link:hover {
+        transform: scale(1.05);
+        background-color: #2ea44f; /* GitHub green */
+    }
+    .github-link img {
+        width: 20px;
+        height: 20px;
+        margin-right: 8px;
+        filter: invert(1);
+    }
+    body {
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, #131010, #3e2b2b); /* Platinum Dusk */
+        color: #2c2c2c;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+    }
+    .container {
+        background: #734b6c; /* Royal Eclipse */
+        color: white;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0px 4px 20px rgba(0,0,0,0.15);
+        max-width: 350px;
+        text-align: center;
+    }
+    h1 {
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 15px;
+    }
+    input {
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 16px;
+        text-align: center;
+        width: 150px;
+        outline: none;
+        background: white;
+        color: black;
+    }
+    button {
+        background: #ffb347;
+        color: black;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+    button:hover {
+        background: #e69a2e;
+    }
+    .loading {
+        display: none;
+        margin-top: 15px;
+        font-size: 16px;
+        font-weight: bold;
+        color: #ffd580;
+        min-height: 20px;
+    }
+    #result {
+        margin-top: 20px;
+        font-size: 18px;
+        font-weight: 600;
+        color: #fff6e5;
+    }
+    #birthdayInfo {
+        margin-top: 10px;
+        font-size: 16px;
+        color: #ffe8b3;
+    }
+    .highlight-text {
+        margin-top: 20px;
+        background: rgba(255, 255, 255, 0.15);
+        padding: 10px;
+        border-radius: 8px;
+        font-weight: bold;
+        color: #ffdf91;
+    }
+    .github-link {
+        display: inline-flex;
+        align-items: center;
+        margin-top: 10px;
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+        transition: transform 0.3s ease, color 0.3s ease;
+    }
+   
+    .github-link img {
+        width: 20px;
+        height: 20px;
+        margin-right: 8px;
+        filter: invert(1);
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Age Calculator</h1>
+    <input type="text" id="birthdate" placeholder="DD/MM/YYYY" maxlength="10">
+    <br>
+    <button onclick="calculateAge()">Calculate Age</button>
+    
+    <div class="loading" id="loadingText"></div>
+    
+    <h2 id="result"></h2>
+    <div id="birthdayInfo"></div>
+
+    <p class="highlight-text"> 😁 Thanks For Using 🫡</p>
+
+    <a href="https://github.com/piyushkadam96k" target="_blank" class="github-link">
+        <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub"> View on GitHub
+    </a>
+</div>
+
+<script>
+// Auto-add slashes when typing
+document.getElementById("birthdate").addEventListener("input", function(e) {
+    let value = e.target.value.replace(/\D/g, ""); 
+    if (value.length > 2 && value.length <= 4) {
+        value = value.slice(0, 2) + "/" + value.slice(2);
+    } else if (value.length > 4) {
+        value = value.slice(0, 2) + "/" + value.slice(2, 4) + "/" + value.slice(4, 8);
+    }
+    e.target.value = value;
+});
+
+// Press Enter to calculate
+document.getElementById("birthdate").addEventListener("keypress", function(e) {
+    if (e.key === "Enter") {
+        calculateAge();
+    }
+});
+
+function calculateAge() {
+    let birthdate = document.getElementById("birthdate").value;
+    let result = document.getElementById("result");
+    let birthdayInfo = document.getElementById("birthdayInfo");
+    let loadingText = document.getElementById("loadingText");
+
+    let datePattern = /^(\d{2})\/(\d{2})\/(\d{4})$/;
+    if (!datePattern.test(birthdate)) {
+        result.innerHTML = "⚠ Please enter date in DD/MM/YYYY format!";
+        birthdayInfo.innerHTML = "";
+        return;
+    }
+
+    let [day, month, year] = birthdate.split("/").map(Number);
+    let birth = new Date(year, month - 1, day);
+
+    if (birth.getDate() !== day || birth.getMonth() !== month - 1 || birth.getFullYear() !== year) {
+        result.innerHTML = "⚠ Invalid date!";
+        birthdayInfo.innerHTML = "";
+        return;
+    }
+
+    result.innerHTML = "";
+    birthdayInfo.innerHTML = "";
+    loadingText.style.display = "block";
+
+    // Funny loading messages
+    let messages = [
+        "🔍 Checking date...",
+        "🤔 Doing some age math...",
+        "🧠 Consulting the time gods...",
+        "😎 Going through NASA",
+        " 🧏‍♂️Using quantum computer",
+        "🛰️ Contacting to satelite",
+        "🛠️ Using API",
+        "🤖 Using AI",
+        "📅 Almost there..."
+    ];
+    let index = 0;
+    loadingText.innerHTML = messages[index];
+
+    let interval = setInterval(() => {
+        index++;
+        if (index < messages.length) {
+            loadingText.innerHTML = messages[index];
+        }
+    }, 800);
+
+    setTimeout(() => {
+        clearInterval(interval);
+        let today = new Date();
+        let age = today.getFullYear() - year;
+        if (today.getMonth() + 1 < month || (today.getMonth() + 1 === month && today.getDate() < day)) {
+            age--;
+        }
+
+        // Live countdown for next birthday
+        let nextBirthday = new Date(today.getFullYear(), month - 1, day);
+        if (nextBirthday < today) {
+            nextBirthday.setFullYear(today.getFullYear() + 1);
+        }
+
+        function updateCountdown() {
+            let now = new Date();
+            let diff = nextBirthday - now;
+            let days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            let hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            let minutes = Math.floor((diff / (1000 * 60)) % 60);
+            let seconds = Math.floor((diff / 1000) % 60);
+            result.innerHTML = `🎉 You are <strong>${age}</strong> years old.`;
+            birthdayInfo.innerHTML = `🎂 Your next birthday is in <strong>${days} days, ${hours} hrs, ${minutes} mins, ${seconds} secs</strong>.`;
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        loadingText.style.display = "none";
+    }, messages.length * 800);
+}
+</script>
+
+</body>
+</html>
+
