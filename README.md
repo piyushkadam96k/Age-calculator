@@ -1,3 +1,7 @@
+preview website 
+https://piyushkadam96k.github.io/Age-calculator/
+
+
 # 🎂 Age Calculator
 
 A fun and interactive **Age Calculator** built with **HTML, CSS, and JavaScript**.  
